@@ -1,0 +1,15 @@
+Charset,UTF-8
+readme.charset,UTF-8
+readme.readme.md
+type,plugin
+name,ukagakaSimpleChatGPT
+craftman,ambergon
+filename,main.dll
+
+id,6228ed2b-5cba-3f3d-df7e-9b16045cfb98
+
+secondchangeinterval,1
+otherghosttalk,before
+
+//更新url
+//homeurl,

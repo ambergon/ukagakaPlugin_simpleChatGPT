@@ -1,0 +1,7 @@
+{
+     "API_KEY"          : "",
+     "ChargeAPISec"     : 30,
+     "ChargeAPI"        : 2, 
+     "ChargeAPIMax"     : 3,
+     "ChatHistoryMax"   : 7
+}
