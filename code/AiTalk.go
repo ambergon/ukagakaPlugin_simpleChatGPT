@@ -105,7 +105,7 @@ func AiTalk( Text string , ID string , FileNameAdd string ) {
     fmt.Println( TextChatGPT )
     //保存
     //OldSaveTextReplaceのテキストも変更すること
-    TextChatGPT  = TextChatGPT + "\\n\\_a[OnSaveTalk," + ID + "_" + FileNameAdd + "]〇\\_a"
+    TextChatGPT  = "\\0\\b[2]" + TextChatGPT + "\\n\\_a[OnSaveTalk," + ID + "_" + FileNameAdd + "]〇\\_a"
 
     ThreadUse = 0
     NextTalk    = TextChatGPT
