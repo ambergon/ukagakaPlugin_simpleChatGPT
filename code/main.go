@@ -112,7 +112,7 @@ func request( h C.HGLOBAL, length *C.long ) C.HGLOBAL {
         //AiTalkModeとして、OnCommnicateが処理されるが何も発言されない\\![]を使用する。
         if References[3] == "OnCommunicate" && References[4] == "\\![]"{
             IdReferences  := strings.Split( References[5] , "\u0001" )
-            if IdReferences[0] == "User" {
+            if IdReferences[0] == "user" {
                 fmt.Print( "\n>> " )
                 fmt.Println( IdReferences[1] )
                 go AiTalk( IdReferences[1] , ID , IdReferences[1] )
