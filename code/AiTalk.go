@@ -75,7 +75,8 @@ func AiTalk( Text string , ID string , FileNameAdd string ) {
     resp, err := client.CreateChatCompletion(
         Sig,
         openai.ChatCompletionRequest{ 
-            Model   : openai.GPT4TurboPreview , 
+            Model   : openai.GPT4o , 
+            //Model   : openai.GPT4TurboPreview , 
             Messages: msgs  ,
             //MaxTokens        : 600  ,
             //元->設定なし。
