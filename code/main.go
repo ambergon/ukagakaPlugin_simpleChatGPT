@@ -115,12 +115,9 @@ func request( h C.HGLOBAL, length *C.long ) C.HGLOBAL {
             if IdReferences[0] == "user" {
                 fmt.Print( "\n>> " )
                 fmt.Println( IdReferences[1] )
-                go AiTalk( IdReferences[1] , ID , IdReferences[1] )
+                go AiTalk( IdReferences[1] )
             }
         }
-
-    } else if ID == "OnSaveTalk"  {
-        Value = OnSaveTalk()
 
     } else if ID == "OnSecondChange"  {
         //ChargeAPISecごとに補充する。

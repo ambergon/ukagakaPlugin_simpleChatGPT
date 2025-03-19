@@ -34,11 +34,10 @@ var ChatHistoryArray []openai.ChatCompletionMessage
 
 
 //FunctionTalkAI
-func AiTalk( Text string , ID string , FileNameAdd string ) {
+func AiTalk( Text string ) {
     NewMessage := openai.ChatCompletionMessage{ Role: openai.ChatMessageRoleUser, Content: Text } 
 
     fmt.Println( "-------------" )
-    fmt.Println( "Talk AI :" + ID )
     if ThreadUse == 1 {
         fmt.Println( "Thread SKIP" )
         return
@@ -94,6 +93,9 @@ func AiTalk( Text string , ID string , FileNameAdd string ) {
         //rate limit抵触で発生した。
         //トークンの消費数超過でも発生した。4097トークン。
         fmt.Fprintln(os.Stderr, err)
+
+        // エラー内容を次のゴーストのトークにする。
+        NextTalk    = err.Error()
         ThreadUse = 0
         return 
     }
@@ -103,15 +105,11 @@ func AiTalk( Text string , ID string , FileNameAdd string ) {
 
 
     TextChatGPT := resp.Choices[0].Message.Content
-    fmt.Println( TextChatGPT )
     //保存
     //OldSaveTextReplaceのテキストも変更すること
-    TextChatGPT  = "\\0\\b[2]" + TextChatGPT + "\\n\\_a[OnSaveTalk," + ID + "_" + FileNameAdd + "]〇\\_a"
 
     ThreadUse = 0
     NextTalk    = TextChatGPT
-    AiTalkText  = TextChatGPT
-    AskText     = Text
 
     //検閲配列
     CheckArray := []string{ "AI" , "人工知能" }
