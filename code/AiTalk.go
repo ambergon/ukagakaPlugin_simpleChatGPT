@@ -7,6 +7,7 @@ import (
     "context"
     "os"
     "os/signal"
+    // model 一覧 https://github.com/sashabaranov/go-openai/blob/master/completion.go
     openai "github.com/sashabaranov/go-openai"
 )
 
