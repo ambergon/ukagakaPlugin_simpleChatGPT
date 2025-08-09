@@ -3,7 +3,7 @@ package main
 
 import (
     "fmt"
-    "regexp"
+    // "regexp"
     "context"
     "os"
     "os/signal"
@@ -105,25 +105,25 @@ func AiTalk( Text string ) {
     ChatHistoryArray = append( ChatHistoryArray , openai.ChatCompletionMessage{ Role: openai.ChatMessageRoleAssistant, Content: resp.Choices[0].Message.Content } )
 
 
-    TextChatGPT := resp.Choices[0].Message.Content
+    TextChatGPT := resp.Choices[0].Message.Content + "\\x" 
     //保存
     //OldSaveTextReplaceのテキストも変更すること
 
     ThreadUse = 0
     NextTalk    = TextChatGPT
 
-    //検閲配列
-    CheckArray := []string{ "AI" , "人工知能" }
-    for _,v := range CheckArray {
-        //AIという単語が入っていた場合履歴に残さない。
-        var CheckAI = regexp.MustCompile( v )
-        if CheckAI.MatchString( TextChatGPT )  {
-            //送信と受信で二つ分。
-            ChatHistoryArray   = ChatHistoryArray[:len( ChatHistoryArray ) - 2 ]
-            fmt.Println( "AIワードを削除。" )
-            break
-        }
-    }
+    // //検閲配列
+    // CheckArray := []string{ "AI" , "人工知能" }
+    // for _,v := range CheckArray {
+    //     //AIという単語が入っていた場合履歴に残さない。
+    //     var CheckAI = regexp.MustCompile( v )
+    //     if CheckAI.MatchString( TextChatGPT )  {
+    //         //送信と受信で二つ分。
+    //         ChatHistoryArray   = ChatHistoryArray[:len( ChatHistoryArray ) - 2 ]
+    //         fmt.Println( "AIワードを削除。" )
+    //         break
+    //     }
+    // }
 }
 
 
